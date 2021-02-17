@@ -1,0 +1,24 @@
+{
+  "name": "@veva/core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pan-alexey/veva.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pan-alexey/veva/issues"
+  },
+  "homepage": "https://github.com/pan-alexey/veva#readme",
+  "dependencies": {
+    "babel-loader": "^8.2.2",
+    "typescript": "^4.1.5",
+    "webpack": "^5.22.0",
+    "webpack-hot-middleware": "^2.25.0"
+  }
+}
