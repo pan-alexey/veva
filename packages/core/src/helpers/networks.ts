@@ -1,5 +1,5 @@
-var os = require('os');
-var ifaces = os.networkInterfaces();
+import * as os from 'os';
+const ifaces = os.networkInterfaces();
 
 const ips = [];
 

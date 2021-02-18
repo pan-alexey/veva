@@ -1,0 +1,1 @@
+lerna add @types/node --hoist
