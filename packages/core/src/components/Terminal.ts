@@ -2,13 +2,8 @@ import ips from '../helpers/networks';
 
 /*
 ------------------------------------
-Application
-client: [xxxxxxxxxx]
-server: [xxxxxxxxxx]
-
-Debug:
-client: [xxxxxxxxxx]
-server: [xxxxxxxxxx]
+Server: [xxxxxxxxxx] | [xxxxxxxxxx]
+Debug: [xxxxxxxxxx] | [xxxxxxxxxx]
 
 Debug was start:
 http://127.0.0.1:8080;
@@ -19,7 +14,6 @@ Try start server:
 
 class Terminal {
   //
-
   constructor(names:Array<string>) {
   }
 

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear": "rm -rf node_modules && lerna exec -- rm -rf node_modules",
     "bootstrap": "lerna bootstrap --hoist",
     "echo": "lerna run echo"
   },
