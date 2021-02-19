@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true,
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/__tests__/*"
+  ]
+}
+\\\
+
+
+
+(ozon_home_headbody|ozon_home_nogtm_headbody|ozon_pdp_157937319_nogtm_headbody|ozon_pdp_157937319_headbody|ozon_home_inline_css|ozon_home_nogtm_inline_css|ozon_pdp_157937319_nogtm_inline_css|catalog_change_filter|catalog_change_filter_no_gtm|catalog_change_sort|catalog_change_sort_no_gtm|catalog_pagination_spa_no_gtm|catalog_to_pdp_spa|catalog_to_pdp_spa_no_gtm|deffer|deffer_empty|fitnes_pitanie_11676|home_pagination|home_pagination_no_gtm|home_to_deffer|home_to_deffer_empty|info_slider|pokupki_yandex_category|pokupki_yandex_home|pokupki_yandex_pdp|odezhda_obuvi_aksessuary_7500|ozon_category_15501|ozon_category_15501_nogtm|ozon_empty|ozon_empty_nogtm|ozon_home|ozon_home_nogtm|ozon_pdp_157937319|ozon_pdp_157937319_nogtm|ozon_pdp_books|ozon_pdp_clothes|ozon_pdp_reviews|ozon_pdp_sellers|ozon_pdp_supermarket|ozon_slider|pdp_change_aspect_spa|pdp_change_aspect_spa_no_gtm|pdp_pagination|pdp_pagination_no_gtm|pdp_to_pdp_spa|pdp_to_pdp_spa_no_gtm|ozon_home_web_entry|ozon_home_composer_cache|ozon_home_composer_cache_no|ozon_home_nogtm_composer_cache|ozon_home_nogtm_composer_cache_no|ozon_pdp_157937319_nogtm_composer_cache|ozon_pdp_157937319_nogtm_composer_cache_no|ozon_pdp_157937319_composer_cache|ozon_pdp_157937319_composer_cache_no|wb_catalog_to_pdp|wb_pdp_to_pdp|wb_change_aspect|wb_change_filter|wb_change_sort|wildberries_home|wildberries_category_15501|wildberries_pdp_157937319|catalog_pagination|pokupki_yandex_category_15501|pokupki_yandex_pdp_157937319|ozon_pdp_amp|ozon_pdp_amp_cdn|pokupki_yandex_catalog_to_pdp|pokupki_yandex_change_filter|pokupki_yandex_pdp_to_pdp|ozon_home_nogtm_delay_0|ozon_home_nogtm_delay_500|ozon_pdp_157937319_nogtm_delay_0|ozon_pdp_157937319_nogtm_delay_500|ozon_category_15501_nogtm_delay_0|ozon_category_15501_nogtm_delay_500|ozon_home_web_entry|ozon_home_web_entry_mock)
