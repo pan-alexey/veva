@@ -1,27 +1,21 @@
 import os from 'os';
 
-class Network {
-  private ips: Array<string> = [];
+export const getIps = (): Array<string> => {
+  const ips: Array<string> = ['127.0.0.1'];
 
-  constructor() {
-    const inrefaces = os.networkInterfaces() || [];
+  const inrefaces = os.networkInterfaces() || [];
 
-    for (const name in inrefaces) {
-      const network = inrefaces[name];
-      if (!network) continue;
+  for (const name in inrefaces) {
+    const network = inrefaces[name];
+    if (!network) continue;
 
-      network.forEach((e)=>{
-        const { family, internal, address } = e;
-        if (family === 'IPv4' && !internal) {
-          this.ips.push(address);
-        }
-      });
-    }
+    network.forEach((e) => {
+      const { family, internal, address } = e;
+      if (family === 'IPv4' && !internal) {
+        ips.push(address);
+      }
+    });
   }
 
-  public get(): Array<string> {
-    return this.ips;
-  }
-}
-
-export default Network;
+  return ips;
+};
