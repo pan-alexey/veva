@@ -1,3 +1,3 @@
-module.exports = () => {
-  return 3;
-}
+const render = require('../build/render').default;
+
+console.log(render('1'));
