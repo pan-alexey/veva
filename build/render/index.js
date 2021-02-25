@@ -38,7 +38,6 @@ var server_1 = __webpack_require__(/*! react-dom/server */ "react-dom/server");
 var app_1 = __importDefault(__webpack_require__(/*! @src/app */ "./src/app.tsx"));
 
 exports.default = function (props) {
-  console.log(props);
   return server_1.renderToString(react_1["default"].createElement(app_1["default"], Object.assign({}, props)));
 };
 

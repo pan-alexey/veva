@@ -1,6 +1,6 @@
 import * as $$path from './utils/path';
 import { Builder } from './utils/builder';
-import webpcackConfig, { IConfig } from './webpack/webpack.config';
+import webpcackConfig, { IConfig } from './webpack/webpack.react';
 import webpack from 'webpack';
 
 // import ssr from './render/ssr';
