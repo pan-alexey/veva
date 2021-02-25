@@ -50,7 +50,7 @@ const configBuilder = (props: IConfig): Object => {
 
   config.devtool = isProd ? false : 'source-map';
   config.mode = isProd ? 'production' : 'development';
-  config.entry = input; // isProd && !isServer ? input : ['webpack-hot-middleware/client', input];
+  config.entry = [input]; // isProd && !isServer ? input : ['webpack-hot-middleware/client', input];
 
   if (isServer) {
     config.target = 'node';

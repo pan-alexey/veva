@@ -12,10 +12,10 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./core/render/server.tsx":
-/*!********************************!*\
-  !*** ./core/render/server.tsx ***!
-  \********************************/
+/***/ "./core/render/$server.tsx":
+/*!*********************************!*\
+  !*** ./core/render/$server.tsx ***!
+  \*********************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -172,7 +172,7 @@ module.exports = require("react-dom/server");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./core/render/server.tsx");
+/******/ 	var __webpack_exports__ = __webpack_require__("./core/render/$server.tsx");
 /******/ 	
 /******/ 	return __webpack_exports__;
 /******/ })()

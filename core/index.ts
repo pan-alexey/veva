@@ -29,7 +29,7 @@ import webpack from 'webpack';
 const serverConfig = webpcackConfig({
   isProd: false,
   isServer: true,
-  input: './core/render/server.tsx', // $$path.resolve('./core/render/ssr.ts'),
+  input: './core/render/$server.tsx',
   output: $$path.resolvePath('./build/render')
 });
 
@@ -40,7 +40,6 @@ webpack(serverConfig, (err, stats) => {
   // if (err || stats.hasErrors()) {
   //   // [Handle errors here](#error-handling)
   // }
-
   console.log(err, stats?.toString());
   // Done processing
 });
