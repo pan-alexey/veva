@@ -59,7 +59,7 @@ const configBuilder = (props: IConfig): Object => {
 
   config.output = {
     path: output,
-    filename: 'index.js',
+    // filename: 'index.js',
     chunkFilename: 'js/[name].[contenthash:8].js',
     libraryTarget: 'umd'
   };
