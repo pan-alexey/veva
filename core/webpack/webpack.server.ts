@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import * as $$path from '../utils/path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import nodeExternals from 'webpack-node-externals';
-import { types } from 'util';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const config: any = {
