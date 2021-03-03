@@ -12,12 +12,17 @@ const rootPath = fs.realpathSync(process.cwd());
 module.exports = {
   mode,
   devtool: isProd ? false : 'source-map',
-  entry: path.resolve(rootPath, 'debug', 'index.js'),
+  entry: {
+    app: path.resolve(rootPath, 'src', 'index.tsx')
+  },
   output: {
     path: path.resolve(rootPath, './dist'),
     filename: '[name].[contenthash:8].js',
     chunkFilename: 'js/[name].([contenthash:8]).js',
     libraryTarget: 'umd'
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx', 'jsx', 'json']
   },
   module: {
     rules: [
@@ -37,6 +42,7 @@ module.exports = {
         test: /\.scss$/,
         use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       },
+      { test: /\.tsx?$/, loader: 'ts-loader'},
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -77,10 +83,7 @@ module.exports = {
             let version = '';
             try {
               // eslint-disable-next-line @typescript-eslint/no-var-requires
-              const packageJson = require(path.resolve(
-                rootPath,
-                './node_modules/' + moduleMatch[1] + '/package.json'
-              ));
+              const packageJson = require(path.resolve(rootPath, './node_modules/' + moduleMatch[1] + '/package.json'));
               version = packageJson ? '.(v' + packageJson.version + ')' : '';
             } catch (error) {}
 
