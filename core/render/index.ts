@@ -1,5 +1,5 @@
-export default class Render {
-  constructor(path) {
-    // load render;
-  }
-}
+// export default class Render {
+//   constructor(path) {
+//     // load render;
+//   }
+// }

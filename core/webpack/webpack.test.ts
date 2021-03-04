@@ -1,29 +1,37 @@
-const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+
+import * as $$path from '../utils/path';
+
 const isProd = true;
 
 const mode = isProd ? 'production' : 'development';
 
-const rootPath = fs.realpathSync(process.cwd());
+// const rootPath = fs.realpathSync(process.cwd());
 
-module.exports = {
+export default {
   mode,
   devtool: isProd ? false : 'source-map',
   entry: {
-    app: path.resolve(rootPath, 'src', 'index.tsx')
+    app: $$path.resolveRoot('./core/render/$client.tsx') //  path.resolve(rootPath, 'src', 'index.tsx')
+  },
+
+  resolve: {
+    alias: {
+      '@src': $$path.resolveRoot('./src')
+    },
+    extensions: ['.ts', '.js', '.tsx', 'jsx', 'json']
   },
   output: {
-    path: path.resolve(rootPath, './dist'),
+    path: $$path.resolveRoot('./dist'),
     filename: '[name].[contenthash:8].js',
     chunkFilename: 'js/[name].([contenthash:8]).js',
     libraryTarget: 'umd'
   },
-  resolve: {
-    extensions: ['.ts', '.js', '.tsx', 'jsx', 'json']
-  },
+  // resolve: {
+  //   extensions: ['.ts', '.js', '.tsx', 'jsx', 'json']
+  // },
   module: {
     rules: [
       {
@@ -42,11 +50,10 @@ module.exports = {
         test: /\.scss$/,
         use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       },
-      { test: /\.tsx?$/, loader: 'ts-loader'},
+      { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
         use: {
           loader: 'babel-loader',
           options: {
@@ -76,14 +83,17 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+          name(module): string {
             // const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
             // return `vendor/${packageName.replace('@', '')}`;
             const moduleMatch = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/);
             let version = '';
             try {
               // eslint-disable-next-line @typescript-eslint/no-var-requires
-              const packageJson = require(path.resolve(rootPath, './node_modules/' + moduleMatch[1] + '/package.json'));
+              const packageJson = require($$path.resolve('./node_modules/' + moduleMatch[1] + '/package.json'));
               version = packageJson ? '.(v' + packageJson.version + ')' : '';
             } catch (error) {}
 

@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import * as $$path from './utils/path';
-import { Builder } from './utils/builder';
-import webpackServer, { IConfig } from './webpack/webpack.server';
-import webpackClient from './webpack/webpack.client';
+// import * as $$path from './utils/path';
+// import { Builder } from './utils/builder';
+// import webpackServer, { IConfig } from './webpack/webpack.server';
+// import webpackClient from './webpack/webpack.client';
 import webpack from 'webpack';
 
-
-const webpackTest = require('./webpack/webpack.test.js');
+import webpackTest from './webpack/webpack.test';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 webpack(webpackTest, (err, stats) => {
   console.log(stats?.toString());
 });
-
 
 // const webackClient = require('./webpack/webpack.client.js');
 // import ssr from './render/ssr';

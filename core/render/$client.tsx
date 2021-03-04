@@ -1,28 +1,35 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-import { render, hydrate } from 'react-dom';
-import App from '@src/app';
+import ReactDOM from 'react-dom';
+// import './index.css';
+import App from '@src/App';
 
-(() => {
-  // @ts-ignore
-  if (!window.__widgets__) window.__widgets__ = {};
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-  const widgetName = 'app-1';
+// (() => {
+//   // @ts-ignore
+//   if (!window.__widgets__) window.__widgets__ = {};
 
-  // @ts-ignore
-  window.__widgets__[widgetName] = {
-    // @ts-ignore
-    hydrate(element, props) {
-      hydrate(<App {...props} />, element);
-    },
-    // @ts-ignore
-    render(element, props) {
-      render(<App {...props} />, element);
-    },
-    // @ts-ignore
-    unmount(element) {
-      // @ts-ignore
-      React.unmountComponentAtNode(element);
-    }
-  };
-})();
+//   const widgetName = 'app-1';
+
+//   // @ts-ignore
+//   window.__widgets__[widgetName] = {
+//     // @ts-ignore
+//     hydrate(element, props) {
+//       hydrate(<App {...props} />, element);
+//     },
+//     // @ts-ignore
+//     render(element, props) {
+//       render(<App {...props} />, element);
+//     },
+//     // @ts-ignore
+//     unmount(element) {
+//       // @ts-ignore
+//       React.unmountComponentAtNode(element);
+//     }
+//   };
+// })();
