@@ -1,0 +1,19 @@
+{
+  "name": "veva",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pan-alexey/veva.git",
+  "author": "Pan Alexey <pan-alexey@live.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npm install lerna && lerna bootstrap --hoist --nohoist=jest",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
