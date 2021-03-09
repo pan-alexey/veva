@@ -1,5 +1,4 @@
 module.exports = {
-  // extends: ["./.eslintrc.base.js", "./index.js", "./prettier.js"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
