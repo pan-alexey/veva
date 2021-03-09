@@ -9,6 +9,15 @@ lerna add jest --dev
 lerna add @types/jest --dev
 lerna add ts-jest --dev
 
+lerna add eslint --dev
+lerna add prettier --dev
+
+lerna add eslint-loader --dev
+lerna add eslint-plugin-filenames --dev
+lerna add eslint-plugin-prettier --dev
+lerna add @typescript-eslint/eslint-plugin --dev
+
+prettier
 
 
 ```

@@ -1,4 +1,4 @@
-const demo = function(input: string): string {
+const demo = function (input: string): string {
   return input;
 };
 

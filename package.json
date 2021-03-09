@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "npm install lerna && lerna bootstrap --hoist --nohoist=jest",
+    "build": "",
     "test": "lerna run test"
   },
   "devDependencies": {
