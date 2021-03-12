@@ -17,11 +17,14 @@ lerna add eslint-plugin-filenames --dev
 lerna add eslint-plugin-prettier --dev
 lerna add @typescript-eslint/eslint-plugin --dev
 
-prettier
+lerna add @veva/prettier-config --scope="@veva/core" --dev
 
 
 ```
 
+lerna add @veva/eslint-config --scope="@veva/eslint-config" --dev
+lerna add @veva/eslint-config --scope="@veva/eslint-config" --dev
+lerna add @veva/eslint-config --scope="@veva/eslint-config" --dev
 
 ### Lerna comands:
 
