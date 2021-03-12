@@ -1,5 +1,11 @@
 # Veva
 
+Intsall global packages
+``` console
+npm install --global lerna
+npm install --global rimraf
+```
+
 Lerna comands:
 
 ``` console
@@ -11,6 +17,8 @@ lerna add ts-jest --dev
 
 lerna add eslint --dev
 lerna add prettier --dev
+lerna add rimraf --dev
+
 
 lerna add eslint-loader --dev
 lerna add eslint-plugin-filenames --dev

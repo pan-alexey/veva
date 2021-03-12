@@ -1,5 +1,0 @@
-{
-  "eslint.codeActionsOnSave": {
-    "source.fixAll": true
-  }
-}

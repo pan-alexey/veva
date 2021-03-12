@@ -1,4 +1,6 @@
 {
+  "lerna": "3.22.1",
+  "useWorkspaces": true,
   "packages": [
     "packages/*",
     "common/*"

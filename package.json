@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "bootstrap": "npm install lerna && lerna bootstrap --hoist --nohoist=jest",
-    "clear": "rimraf node_modules",
+    "bootstrap": "lerna bootstrap --hoist --nohoist=jest",
+    "clear": "rimraf ./**/node_modules",
     "lerna": "lerna",
     "lerna:add": "lerna add",
     "lerna:clear": "lerna run clear",
@@ -17,9 +17,5 @@
   "workspaces": [
     "packages/*",
     "common/*"
-  ],
-  "dependencies": {
-    "lerna": "^3.22.1",
-    "rimraf": "^2.7.1"
-  }
+  ]
 }

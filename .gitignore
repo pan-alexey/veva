@@ -6,6 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+
+/(www_wildberries_ru|(.+)?pokupki_market_yandex_ru|www_ozon_ru|web_o3_ru|web-entrypoint_prod_a_o3_ru|seller_ozon_ru|ozon-stg_ozonru_me)/
+
+
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

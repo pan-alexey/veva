@@ -1,0 +1,2 @@
+    "@veva/eslint-config": "^1.0.0",
+    "@veva/prettier-config": "^1.0.0",
