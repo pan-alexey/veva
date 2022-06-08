@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "removeComments": true,
+    "target": "es2015",
+    "declaration": true,
+    "types": ["node"]
+  },
+  "files": ["src/index.ts"]
+}

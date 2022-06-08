@@ -1,0 +1,49 @@
+{
+  "name": "@veva/webpack",
+  "version": "1.1.1",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "veva.webpack": "./bin/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clear && npm run build:src && npm run build:cli",
+    "build:src": "webpack",
+    "build:cli": "webpack --config ./cli/webpack.config.js && chmod +x bin/index.js",
+    "clear": "rimraf dist && rimraf bin",
+    "test": "jest --config jest.config.json",
+    "lint": "eslint ./ --ext .js --ext .ts",
+    "lint:fix": "eslint ./ --ext .js --ext .ts --fix"
+  },
+  "devDependencies": {
+    "jest": "^27.1.4",
+    "ts-jest": "^27.1.4",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals":"^3.0.0",
+    "@types/webpack-env":"^1.16.4",
+    "@types/node": "^17.0.1",
+    "@types/cli-table":"^0.3.0",
+    "raw-loader":"^4.0.2"
+  },
+  "dependencies": {
+    "cli-table":"^0.3.11",
+    "chalk": "^4.1.2",
+    "handlebars": "^4.7.7",
+    "webpack": "^5.72.1",
+    "webpack-hmr-server":"^1.1.5",
+    "@veva/core-server": "^1.1.0",
+    "@veva/core-app": "^1.1.0",
+    "@veva/core-builder":  "^1.1.0",
+    "@veva/utils": "^1.1.0",
+    "@veva/core-hmr-client-preact": "^1.1.0"
+  }
+}

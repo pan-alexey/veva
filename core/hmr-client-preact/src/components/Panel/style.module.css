@@ -1,0 +1,51 @@
+.panel {
+  transform: translate3d(0, 0, 0);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* -------------------- */
+
+.panel-body {
+  background: #2a344c;
+}
+
+.panel-content {
+  padding: 10px;
+}
+
+/* -------------------- */
+
+.panel-tabs {
+  display: flex;
+  background: #1f2538;
+}
+
+.tab-item {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.tab-item-active {
+  background: #2a344c;
+}
+
+/* -------------------- */
+.panel-header {
+  padding: 15px;
+  padding-bottom: 0;
+  display: flex;
+}
+
+.panel-header-action {
+  flex-grow: 1;
+}
+
+.button {
+  margin: 0 2px;
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #fff;
+}

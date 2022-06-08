@@ -1,0 +1,25 @@
+{
+  "name": "@veva/utils",
+  "version": "1.1.3",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clear": "rimraf *.js && rimraf *.d.ts",
+    "build": "npm run clear && tsc --outDir ./",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "minimist":"^1.2.6",
+    "dotenv":"^16.0.1",
+    "webpack":"^5.73.0"
+  }
+}

@@ -1,0 +1,11 @@
+{{> header }}
+
+{{#if serverReady}}
+  App running at:
+  💻 Local:    {{#chalk 'blueBright'}}http://127.0.0.1:{{ port }}{{/chalk}}
+  🌐 Network:  {{#chalk 'blueBright'}}http://{{ ip }}:{{ port }}{{/chalk}}
+{{else}}
+  ❌ {{#chalk 'red' 'bold'}}Server is start but not ready{{/chalk}}, first compile {{#chalk 'red' 'bold'}}is failed{{/chalk}}
+{{/if}}
+
+{{> footer }}

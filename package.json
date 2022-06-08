@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "repository": "https://github.com/pan-alexey/veva.git",
+  "author": "Pan Alexey <pan-alexey@live.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "config/*",
+      "utils",
+      "core/*",
+      "packages/*",
+      "examples/*"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/svelte",
+      "**/preact"
+    ]
+  },
+  "scripts": {
+    "dev": "npm run clear && npm run bootstrap",
+    "bootstrap": "npm install && npm run build",
+    "build": "npm run build:utils && npm run build:core && npm run build:core-hmr && npm run build:package",
+    "build:utils": "npm run build -w @veva/utils",
+    "build:core-hmr": "npm run build -w @veva/core-hmr-client-svelte -w @veva/core-hmr-client-preact",
+    "build:core": "npm run build -w @veva/core-app -w @veva/core-builder -w @veva/core-server",
+    "build:package": "npm run build -w @veva/react -w @veva/webpack",
+    "clear": "rimraf ./**/package-lock.json && rimraf ./**/yarn.lock && rimraf ./**/node_modules"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

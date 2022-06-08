@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+    ],
+  },
+  "files": [
+    "./src/index.d.ts",
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./dist/",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "esnext",
+    "strict": true,
+    "removeComments": true,
+    "moduleResolution": "node",
+    "types": ["node", "webpack-env"],
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "include": [
+    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+  ]
+}

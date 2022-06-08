@@ -1,0 +1,23 @@
+{{#nolinebreaks}}
+{{#chalk "bgBlueBright" "white"}}{{ appName }} {{/chalk}}{{#chalk "bgBlue" "white"}} {{ appVersion }} {{/chalk}}
+
+{{#if (isEqual compileStatus 'success')}}
+{{#chalk 'green'}} Compiled successfully! {{/chalk}}
+{{/if}}
+
+{{#if (isEqual compileStatus 'warning')}}
+{{#chalk 'yellow'}} Compiled with warnings! {{/chalk}}
+{{/if}}
+
+{{#if (isEqual compileStatus 'failed')}}
+{{#chalk 'red' 'bold'}} Failed to compile! {{/chalk}}
+{{/if}}
+
+{{/nolinebreaks}}
+{{!-- Compiled successfully! --}}
+{{!-- Failed to compile. --}}
+
+
+  🚀 Node: {{ nodeVersion }} 
+  📦 Webpack: {{ webpackVersion }}
+  🔥 HMR: {{#if hot}}Enable{{else}}{{#chalk 'red' 'bold'}}Disable{{/chalk}}{{/if}}
