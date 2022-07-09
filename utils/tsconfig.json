@@ -9,7 +9,12 @@
     "removeComments": true,
     "target": "es2015",
     "declaration": true,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "!**/mock/**"
+  ],
 }

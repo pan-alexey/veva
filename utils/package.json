@@ -7,15 +7,18 @@
     "access": "public"
   },
   "scripts": {
-    "clear": "rimraf *.js && rimraf *.d.ts",
+    "clear": "rimraf *.js  && rimraf *.d.ts",
     "build": "npm run clear && tsc --outDir ./",
+    "test": "jest --collect-coverage --config .jest.config.js",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix"
   },
   "devDependencies": {
     "@types/node": "^17.0.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "jest": "^27.1.4",
+    "@types/jest": "^27.4.1"
   },
   "dependencies": {
     "minimist":"^1.2.6",

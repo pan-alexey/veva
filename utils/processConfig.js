@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getConfigs = exports.getAppConfigPath = void 0;
+exports.getConfigs = exports.getAppConfigPath = exports.getArgvValue = exports.getEnvType = exports.getActionType = exports.ActionEnv = void 0;
 const minimist_1 = __importDefault(require("minimist"));
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -12,32 +12,35 @@ var ActionEnv;
     ActionEnv["dev"] = "development";
     ActionEnv["build"] = "production";
     ActionEnv["test"] = "testing";
-})(ActionEnv || (ActionEnv = {}));
+})(ActionEnv = exports.ActionEnv || (exports.ActionEnv = {}));
 const getActionType = (value) => {
     if (Object.keys(ActionEnv).includes(value)) {
         return value;
     }
     return null;
 };
+exports.getActionType = getActionType;
 const getEnvType = (actionType) => {
     return actionType ? ActionEnv[actionType] : null;
 };
+exports.getEnvType = getEnvType;
 const getArgvValue = (value, general) => {
     if (Array.isArray(value) && value.length > 0) {
-        return String(value[0] ? value[0] : general);
+        return (0, exports.getArgvValue)(value[0], general);
     }
     if (typeof value === 'string' || typeof value === 'number') {
         return String(value);
     }
     return general;
 };
+exports.getArgvValue = getArgvValue;
 const getProcessConfig = () => {
     const argv = (0, minimist_1.default)(process.argv.slice(2));
     const processCwd = process.cwd();
-    const envConfig = getArgvValue(argv.env, '');
-    const appConfig = getArgvValue(argv.config, '');
-    const actionType = getActionType(argv._[0]);
-    const envType = getEnvType(actionType);
+    const envConfig = (0, exports.getArgvValue)(argv.env, '');
+    const appConfig = (0, exports.getArgvValue)(argv.config, '');
+    const actionType = (0, exports.getActionType)(argv._[0]);
+    const envType = (0, exports.getEnvType)(actionType);
     return {
         actionType,
         envType,
@@ -62,7 +65,7 @@ const getConfigs = () => {
     }
     return {
         config,
-        env: process.env
+        env: process.env,
     };
 };
 exports.getConfigs = getConfigs;

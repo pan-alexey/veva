@@ -1,5 +1,5 @@
 {{#nolinebreaks}}
-{{#chalk "bgBlueBright" "white"}}{{ appName }} {{/chalk}}{{#chalk "bgBlue" "white"}} {{ appVersion }} {{/chalk}}
+{{#chalk "bgBlueBright" "white"}} {{ appName }} {{/chalk}}{{#chalk "bgBlue" "white"}} {{ appVersion }} {{/chalk}}
 
 {{#if (isEqual compileStatus 'success')}}
 {{#chalk 'green'}} Compiled successfully! {{/chalk}}
@@ -16,7 +16,6 @@
 {{/nolinebreaks}}
 {{!-- Compiled successfully! --}}
 {{!-- Failed to compile. --}}
-
 
   🚀 Node: {{ nodeVersion }} 
   📦 Webpack: {{ webpackVersion }}

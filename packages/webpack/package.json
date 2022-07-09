@@ -44,6 +44,6 @@
     "@veva/core-app": "^1.1.0",
     "@veva/core-builder":  "^1.1.0",
     "@veva/utils": "^1.1.0",
-    "@veva/core-hmr-client-preact": "^1.1.0"
+    "@veva/core-hmr-client": "^1.1.0"
   }
 }

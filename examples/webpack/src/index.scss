@@ -4,9 +4,14 @@ html {
   overflow: hidden;
 }
 
-#test {
-  width: calc(100px - 20px);
+#main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
+
 @mixin sp-layout {
   @media screen and (max-width: 750px) {
     @content;

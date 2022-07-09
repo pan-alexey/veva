@@ -36,7 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("{{#nolinebreaks}}\n{{#chalk \"bgBlueBright\" \"white\"}}{{ appName }} {{/chalk}}{{#chalk \"bgBlue\" \"white\"}} {{ appVersion }} {{/chalk}}\n\n{{#if (isEqual compileStatus 'success')}}\n{{#chalk 'green'}} Compiled successfully! {{/chalk}}\n{{/if}}\n\n{{#if (isEqual compileStatus 'warning')}}\n{{#chalk 'yellow'}} Compiled with warnings! {{/chalk}}\n{{/if}}\n\n{{#if (isEqual compileStatus 'failed')}}\n{{#chalk 'red' 'bold'}} Failed to compile! {{/chalk}}\n{{/if}}\n\n{{/nolinebreaks}}\n{{!-- Compiled successfully! --}}\n{{!-- Failed to compile. --}}\n\n\n  🚀 Node: {{ nodeVersion }} \n  📦 Webpack: {{ webpackVersion }}\n  🔥 HMR: {{#if hot}}Enable{{else}}{{#chalk 'red' 'bold'}}Disable{{/chalk}}{{/if}}\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("{{#nolinebreaks}}\n{{#chalk \"bgBlueBright\" \"white\"}} {{ appName }} {{/chalk}}{{#chalk \"bgBlue\" \"white\"}} {{ appVersion }} {{/chalk}}\n\n{{#if (isEqual compileStatus 'success')}}\n{{#chalk 'green'}} Compiled successfully! {{/chalk}}\n{{/if}}\n\n{{#if (isEqual compileStatus 'warning')}}\n{{#chalk 'yellow'}} Compiled with warnings! {{/chalk}}\n{{/if}}\n\n{{#if (isEqual compileStatus 'failed')}}\n{{#chalk 'red' 'bold'}} Failed to compile! {{/chalk}}\n{{/if}}\n\n{{/nolinebreaks}}\n{{!-- Compiled successfully! --}}\n{{!-- Failed to compile. --}}\n\n  🚀 Node: {{ nodeVersion }} \n  📦 Webpack: {{ webpackVersion }}\n  🔥 HMR: {{#if hot}}Enable{{else}}{{#chalk 'red' 'bold'}}Disable{{/chalk}}{{/if}}\n");
 
 /***/ }),
 
@@ -50,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("{{> header }}\n\n{{#if serverReady}}\n  App running at:\n  💻 Local:    {{#chalk 'blueBright'}}http://127.0.0.1:{{ port }}{{/chalk}}\n  🌐 Network:  {{#chalk 'blueBright'}}http://{{ ip }}:{{ port }}{{/chalk}}\n{{else}}\n  ❌ {{#chalk 'red' 'bold'}}Server is start but not ready{{/chalk}}, first compile {{#chalk 'red' 'bold'}}is failed{{/chalk}}\n{{/if}}\n\n{{> footer }}");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("═══════════════════════════════════════════════════════════════════\n{{> header }}\n\n{{#if serverReady}}\n  App running at:\n  💻 Local:    {{#chalk 'blueBright'}}http://127.0.0.1:{{ port }}{{/chalk}}\n  🌐 Network:  {{#chalk 'blueBright'}}http://{{ ip }}:{{ port }}{{/chalk}}\n{{else}}\n  ❌ {{#chalk 'red' 'bold'}}Server is start but not ready{{/chalk}}, first compile {{#chalk 'red' 'bold'}}is failed{{/chalk}}\n{{/if}}\n\n{{> footer }}\n\n═══════════════════════════════════════════════════════════════════\n");
 
 /***/ }),
 
@@ -64,7 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("{{> header }}\n\n  💻 Client: {{progressbar progress '#44bb97' '#2b2b2b' 35}} [{{#chalk 'grey'}}{{ progressStatus }}{{/chalk}}]\n\n{{> footer }}");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("═══════════════════════════════════════════════════════════════════\n{{> header }}\n\n  💻 Client: {{progressbar progress '#44bb97' '#2b2b2b' 35}} [{{#chalk 'grey'}}{{ progressStatus }}{{/chalk}}]\n\n{{> footer }}\n\n═══════════════════════════════════════════════════════════════════\n\n");
 
 /***/ }),
 
@@ -165,6 +165,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const webpack_1 = __importDefault(__webpack_require__(/*! webpack */ "webpack"));
 const core_builder_1 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const render_1 = __webpack_require__(/*! ./render */ "./src/components/build/render.ts");
+const chalk_1 = __importDefault(__webpack_require__(/*! chalk */ "chalk"));
 const core_builder_2 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const log = (message, ...optionalParams) => {
     const timestamp = '[' + new Date().toUTCString() + '] ';
@@ -200,13 +201,20 @@ async function default_1(options) {
             process.exit(1);
         }
         if (state.stats.hasErrors()) {
-            console.log('Build with error');
+            console.log(chalk_1.default.red.bold('Build with error'));
             console.log('');
-            console.log(state.stats.toString());
+            console.log(state.stats.toString({
+                colors: true,
+                modules: false,
+                children: false,
+                chunks: false,
+                chunkModules: false,
+                stats: 'errors-only',
+            }));
             process.exit(1);
         }
         (0, render_1.renderAssets)(state.stats);
-        console.log('Build success');
+        console.log(chalk_1.default.green.bold('Build success'));
     });
     builder.run();
 }
@@ -323,11 +331,17 @@ const webpack_hmr_server_1 = __webpack_require__(/*! webpack-hmr-server */ "webp
 const config_1 = __webpack_require__(/*! ../../config */ "./src/config/index.ts");
 const webpack_1 = __importDefault(__webpack_require__(/*! webpack */ "webpack"));
 const templates = __importStar(__webpack_require__(/*! ./templates */ "./src/components/dev/templates/index.ts"));
-const index_1 = __importDefault(__webpack_require__(/*! ./stats/index */ "./src/components/dev/stats/index.ts"));
+const chalk_1 = __importDefault(__webpack_require__(/*! chalk */ "chalk"));
+const fs = __importStar(__webpack_require__(/*! fs */ "fs"));
 const core_builder_1 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const core_builder_2 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const core_server_1 = __webpack_require__(/*! @veva/core-server */ "@veva/core-server");
 const utils_1 = __webpack_require__(/*! @veva/utils */ "@veva/utils");
+const isFile = async (file) => new Promise(resolve => {
+    fs.access(file, fs.constants.F_OK, (err) => {
+        resolve(!err);
+    });
+});
 async function default_1(options) {
     const { devConfig, appConfig } = options;
     // 1. start server
@@ -347,7 +361,7 @@ async function default_1(options) {
     if (devConfig.hot) {
         (0, core_builder_1.applyPluginHMR)(compiler);
         (0, core_builder_1.applyNoEmitOnErrorsPlugin)(compiler);
-        (0, core_builder_1.applyAdditionalEntries)(compiler, ["webpack-hmr-server/client.legacy.js", "@veva/core-hmr-client-preact"]);
+        (0, core_builder_1.applyAdditionalEntries)(compiler, ["webpack-hmr-server/client.legacy.js", "@veva/core-hmr-client"]);
     }
     // 4. create builder and prcessing steps
     const builder = new core_builder_2.Watch.Compiler(compiler);
@@ -366,7 +380,7 @@ async function default_1(options) {
             hot: devConfig.hot,
         }));
     })
-        .on('done', (state) => {
+        .on('done', async (state) => {
         utils_1.terminal.clear();
         if (state.err) {
             console.log(state.err);
@@ -381,20 +395,44 @@ async function default_1(options) {
         }
         const statJson = state.stats.toJson({
             cached: true,
-            children: true,
-            modules: true,
+            // children: true,
+            // modules: true,
             timings: true,
             hash: true,
+            colors: true,
+            modules: false,
+            children: false,
+            chunks: false,
+            chunkModules: false
         });
         if (compileStatus !== 'failed') {
             server.static(statJson.outputPath); // default static webpack
             server.setReady(true);
         }
-        if (statJson.warnings && options.showWarnings) {
-            (0, index_1.default)(statJson.warnings, 'warnings');
+        const statsData = (0, webpack_hmr_server_1.statsToData)(state.stats);
+        if (statsData.warnings && options.showWarnings) {
+            for (let i = 0; i < statsData.warnings.length; i++) {
+                const warning = statsData.warnings[i];
+                let file = warning.moduleName || warning.file ? warning._name_ : '';
+                file = file && warning.loc ? `${file}:${parseInt(warning.loc)}` : file;
+                let title = `🟡 ${chalk_1.default.yellow.bold('Warning')}`;
+                title += file ? ` in ${file}` : ':';
+                console.log(title);
+                console.log(warning.message);
+                console.log('');
+            }
         }
-        if (statJson.errors) {
-            (0, index_1.default)(statJson.errors, 'errors');
+        if (statsData.errors) {
+            for (let i = 0; i < statsData.errors.length; i++) {
+                const error = statsData.errors[i];
+                let file = error.moduleName || error.file ? error._name_ : '';
+                file = file && error.loc ? `${file}:${parseInt(error.loc)}` : file;
+                let title = `❌ ${chalk_1.default.red.bold('ERROR')}`;
+                title += file ? ` in ${file}` : ':';
+                console.log(title);
+                console.log(error.message);
+                console.log('');
+            }
         }
         console.log(templates.done({
             packageName: config_1.packageName,
@@ -414,37 +452,6 @@ async function default_1(options) {
     });
 }
 exports["default"] = default_1;
-
-
-/***/ }),
-
-/***/ "./src/components/dev/stats/index.ts":
-/*!*******************************************!*\
-  !*** ./src/components/dev/stats/index.ts ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const webpackStats_1 = __webpack_require__(/*! @veva/utils/webpackStats */ "@veva/utils/webpackStats");
-const utils_1 = __webpack_require__(/*! @veva/utils */ "@veva/utils");
-const chalk_1 = __importDefault(__webpack_require__(/*! chalk */ "chalk"));
-exports["default"] = (errors, type) => {
-    const { items } = (0, webpackStats_1.processErrors)({
-        client: errors,
-    });
-    const result = items.reverse();
-    const lable = type === 'errors' ? chalk_1.default.bgRed.white(' ERROR: ') : chalk_1.default.bgYellow.black(' WARNINGS: ');
-    result.forEach(item => {
-        console.log(lable);
-        console.log(item.title);
-        console.log(item.message.client);
-        utils_1.terminal.breakLine();
-    });
-};
 
 
 /***/ }),
@@ -617,16 +624,6 @@ module.exports = require("@veva/utils/processConfig");
 
 /***/ }),
 
-/***/ "@veva/utils/webpackStats":
-/*!*******************************************!*\
-  !*** external "@veva/utils/webpackStats" ***!
-  \*******************************************/
-/***/ ((module) => {
-
-module.exports = require("@veva/utils/webpackStats");
-
-/***/ }),
-
 /***/ "chalk":
 /*!************************!*\
   !*** external "chalk" ***!
@@ -644,6 +641,16 @@ module.exports = require("chalk");
 /***/ ((module) => {
 
 module.exports = require("cli-table");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+module.exports = require("fs");
 
 /***/ }),
 
@@ -693,7 +700,7 @@ module.exports = require("webpack-hmr-server");
   \**********************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"name":"@veva/webpack","version":"1.1.0","main":"dist/index.js","types":"./dist/index.d.ts","bin":{"veva.webpack":"./bin/index.js"},"publishConfig":{"access":"public"},"files":["bin","dist"],"scripts":{"build":"npm run clear && npm run build:src && npm run build:cli","build:src":"webpack","build:cli":"webpack --config ./cli/webpack.config.js && chmod +x bin/index.js","clear":"rimraf dist && rimraf bin","test":"jest --config jest.config.json","lint":"eslint ./ --ext .js --ext .ts","lint:fix":"eslint ./ --ext .js --ext .ts --fix"},"devDependencies":{"jest":"^27.1.4","ts-jest":"^27.1.4","ts-loader":"^9.2.7","typescript":"^4.6.2","webpack-cli":"^4.9.2","webpack-node-externals":"^3.0.0","@types/webpack-env":"^1.16.4","@types/node":"^17.0.1","@types/cli-table":"^0.3.0","raw-loader":"^4.0.2"},"dependencies":{"cli-table":"^0.3.11","chalk":"^4.1.2","handlebars":"^4.7.7","webpack":"^5.72.1","webpack-hmr-server":"^1.1.5","@veva/core-app":"^1.1.0","@veva/core-builder":"^1.1.0","@veva/utils":"^1.1.0","@veva/core-hmr-client-preact":"^1.1.0"}}');
+module.exports = JSON.parse('{"name":"@veva/webpack","version":"1.1.1","main":"dist/index.js","types":"./dist/index.d.ts","bin":{"veva.webpack":"./bin/index.js"},"publishConfig":{"access":"public"},"files":["bin","dist"],"scripts":{"build":"npm run clear && npm run build:src && npm run build:cli","build:src":"webpack","build:cli":"webpack --config ./cli/webpack.config.js && chmod +x bin/index.js","clear":"rimraf dist && rimraf bin","test":"jest --config jest.config.json","lint":"eslint ./ --ext .js --ext .ts","lint:fix":"eslint ./ --ext .js --ext .ts --fix"},"devDependencies":{"jest":"^27.1.4","ts-jest":"^27.1.4","ts-loader":"^9.2.7","typescript":"^4.6.2","webpack-cli":"^4.9.2","webpack-node-externals":"^3.0.0","@types/webpack-env":"^1.16.4","@types/node":"^17.0.1","@types/cli-table":"^0.3.0","raw-loader":"^4.0.2"},"dependencies":{"cli-table":"^0.3.11","chalk":"^4.1.2","handlebars":"^4.7.7","webpack":"^5.72.1","webpack-hmr-server":"^1.1.5","@veva/core-server":"^1.1.0","@veva/core-app":"^1.1.0","@veva/core-builder":"^1.1.0","@veva/utils":"^1.1.0","@veva/core-hmr-client":"^1.1.0"}}');
 
 /***/ })
 

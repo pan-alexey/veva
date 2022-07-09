@@ -2,24 +2,10 @@ import minimist from 'minimist';
 import path from 'path';
 import dotenv from 'dotenv';
 
-enum ActionEnv {
+export enum ActionEnv {
   dev = 'development',
   build = 'production',
   test = 'testing',
-}
-
-export type ActionType = null | keyof typeof ActionEnv;
-export type EnvType = `${ActionEnv}` | null;
-
-const getActionType = (value: string): ActionType  => {
-  if (Object.keys(ActionEnv).includes(value)) {
-    return value as ActionType
-  }
-  return null;
-}
-
-const getEnvType = (actionType: ActionType): EnvType  => {
-  return actionType ? ActionEnv[actionType] : null;
 }
 
 export interface Config {
@@ -31,9 +17,23 @@ export interface Config {
   envType: EnvType;
 }
 
-const getArgvValue = <T>(value: unknown, general: T): string | T  => {
+export type ActionType = null | keyof typeof ActionEnv;
+export type EnvType = `${ActionEnv}` | null;
+
+export const getActionType = (value: string): ActionType => {
+  if (Object.keys(ActionEnv).includes(value)) {
+    return value as ActionType;
+  }
+  return null;
+};
+
+export const getEnvType = (actionType?: ActionType): EnvType => {
+  return actionType ? ActionEnv[actionType] : null;
+};
+
+export const getArgvValue = <T>(value: unknown, general: T): string | T => {
   if (Array.isArray(value) && value.length > 0) {
-    return String(value[0] ? value[0] : general)
+    return getArgvValue(value[0], general);
   }
 
   if (typeof value === 'string' || typeof value === 'number') {
@@ -41,7 +41,7 @@ const getArgvValue = <T>(value: unknown, general: T): string | T  => {
   }
 
   return general;
-}
+};
 
 const getProcessConfig = (): Config => {
   const argv = minimist(process.argv.slice(2));
@@ -58,13 +58,13 @@ const getProcessConfig = (): Config => {
     envConfig,
     argv,
     processCwd,
-  }
-}
+  };
+};
 
 export const getAppConfigPath = (): string => {
-  const { processCwd, appConfig} = getProcessConfig();
-  return path.resolve(processCwd, appConfig)
-}
+  const { processCwd, appConfig } = getProcessConfig();
+  return path.resolve(processCwd, appConfig);
+};
 
 export const getConfigs = () => {
   const config = getProcessConfig();
@@ -72,15 +72,15 @@ export const getConfigs = () => {
   // Auto assign env values
   dotenv.config({
     path: path.resolve(config.processCwd, config.envConfig),
-  })
+  });
 
   // Override process env
-  if ( config.envType === 'production' ) {
-    process.env.NODE_ENV = 'production'
+  if (config.envType === 'production') {
+    process.env.NODE_ENV = 'production';
   }
 
   return {
     config,
-    env: process.env
-  }
-}
+    env: process.env,
+  };
+};

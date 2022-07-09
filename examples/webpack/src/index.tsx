@@ -1,16 +1,13 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import Svg from './svg/logo.svg';
-import WebpackImg from './assets/webpack.png'
-
 import './index.scss'
 
-// let a: string = 1;
+let a: string = 1;
 function App() {
   const Text = React.lazy(() => import("./components/Text"));
 
   return (
-    <div>
+    <div id="main">
       <div id='stars'></div>
       <div id='stars2'></div>
       <div id='stars3'></div>
@@ -23,9 +20,6 @@ function App() {
           <Text />
         </Suspense>
       </div>
-
-      {/* <img src={WebpackImg} classNameName="App-logo" alt="logo" /> */}
-      {/* <span dangerouslySetInnerHTML={{__html: Svg}} /> */}
     </div>
   );
 }

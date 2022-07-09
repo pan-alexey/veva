@@ -1,9 +1,10 @@
 import { Configuration } from 'webpack';
-import webpackHmrServer, {createHotServer} from 'webpack-hmr-server';
+import webpackHmrServer, {createHotServer, statsToData} from 'webpack-hmr-server';
 import { packageName, packageVersion } from '../../config';
 import webpack from 'webpack';
 import * as templates from './templates';
-import processStats from './stats/index';
+import chalk from 'chalk';
+import * as fs from 'fs';
 
 import {
   applyPluginHMR,
@@ -22,6 +23,12 @@ export interface Options {
   appConfig: Configuration;
   showWarnings: boolean;
 }
+
+const isFile = async (file: string) => new Promise(resolve => {
+  fs.access(file, fs.constants.F_OK, (err) => {
+    resolve(!err)
+  });
+})
 
 export default async function (options: Options) {
   const { devConfig, appConfig } = options;
@@ -44,7 +51,7 @@ export default async function (options: Options) {
   if (devConfig.hot) {
     applyPluginHMR(compiler);
     applyNoEmitOnErrorsPlugin(compiler);
-    applyAdditionalEntries(compiler, ["webpack-hmr-server/client.legacy.js", "@veva/core-hmr-client-preact"]);
+    applyAdditionalEntries(compiler, ["webpack-hmr-server/client.legacy.js", "@veva/core-hmr-client"]);
   }
 
   // 4. create builder and prcessing steps
@@ -64,7 +71,7 @@ export default async function (options: Options) {
         hot: devConfig.hot,
       }))
     })
-    .on('done', (state) => {
+    .on('done', async (state) => {
       terminal.clear();
       if (state.err) {
         console.log(state.err);
@@ -80,21 +87,51 @@ export default async function (options: Options) {
 
       const statJson = state.stats.toJson({
         cached: true,
-        children: true,
-        modules: true,
+        // children: true,
+        // modules: true,
         timings: true,
         hash: true,
+        colors: true,
+        modules: false,
+        children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+        chunks: false,
+        chunkModules: false
       });
 
-      if (compileStatus!=='failed') {
+      if (compileStatus !=='failed' ) {
         server.static(statJson.outputPath); // default static webpack
         server.setReady(true);
       }
-      if (statJson.warnings && options.showWarnings) {
-        processStats(statJson.warnings, 'warnings');
+
+      const statsData = statsToData(state.stats);
+      if (statsData.warnings && options.showWarnings) {
+        for (let i = 0; i < statsData.warnings.length; i++) {
+          const warning = statsData.warnings[i];
+          let file = warning.moduleName || warning.file ? warning._name_ : '';
+          file = file && warning.loc ? `${file}:${parseInt(warning.loc)}` : file;
+
+          let title = `🟡 ${chalk.yellow.bold('Warning')}`;
+          title += file ? ` in ${file}` : ':';
+
+          console.log(title)
+          console.log(warning.message);
+          console.log('')
+        }
       }
-      if (statJson.errors) {
-        processStats(statJson.errors, 'errors');
+
+      if (statsData.errors) {
+        for (let i = 0; i < statsData.errors.length; i++) {
+          const error = statsData.errors[i];
+          let file = error.moduleName || error.file ? error._name_ : '';
+          file = file && error.loc ? `${file}:${parseInt(error.loc)}` : file;
+
+          let title = `❌ ${chalk.red.bold('ERROR')}`;
+          title += file ? ` in ${file}` : ':';
+
+          console.log(title)
+          console.log(error.message);
+          console.log('')
+        }
       }
 
       console.log(templates.done({

@@ -116,7 +116,7 @@ export default config(async (props) => {
             name(module) {
               // @ts-ignore
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-              return `./chunks/npm.${packageName.replace('@', '')}`
+              return `./js/vendor/${packageName.replace('@', '')}`
             },
           },
         },

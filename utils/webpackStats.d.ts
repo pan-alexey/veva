@@ -19,4 +19,5 @@ export interface Result {
     types: Array<keyof ErrorOptions>;
     items: Array<ResultItems>;
 }
-export declare const processErrors: (options: ErrorOptions) => Result;
+export declare const simpleHash: (s: string) => number;
+export declare const processErrors: (options: ErrorOptions) => void;
