@@ -1,18 +1,16 @@
 import { Fragment, h, JSX } from "preact";
-import styles from './style.module.css';
+import { Bug, Carret, Close, Code, Desktop } from '~/components/svg'
+import styles from "./styles/index.css";
+import { cssClassName } from '~/utils';
 
 export const Navbar = (props: {
   onClose: () => void;
-  errorCount: number;
 }): JSX.Element => {
   return (
   <Fragment>
-    <div className={[styles['nav'], styles['navbar']].join(' ')}>
-      <div className={styles['navbar-content']}>Build with error ({ props.errorCount })</div>
-      <div onClick={() => props.onClose()} className={styles['navbar-close']}>
-        <span className={styles['navbar-close-icon']}></span>
-      </div>
+    <div className={cssClassName(styles, ['navbar'])}>
+      <div  className={cssClassName(styles, ['logo'])}><Bug size="18px" className={cssClassName(styles, ['icon'])}/> Compile with error</div>
+      <div className={cssClassName(styles, ['action'])} onClick={props.onClose} data-testid={"navbar-close"}><Close /></div>
     </div>
-    <nav className={styles['nav']}></nav>
   </Fragment>)
 };

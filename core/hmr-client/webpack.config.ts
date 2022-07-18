@@ -1,8 +1,10 @@
-const webpack = require("webpack");
-const path = require("path");
-const TerserPlugin = require("terser-webpack-plugin");
-module.exports = (env, args) => {
-  const config = {
+import { Configuration } from 'webpack';
+import path from 'path';
+import TerserPlugin from 'terser-webpack-plugin';
+
+
+export default (env: Record<string, string|boolean>):Configuration  => {
+  const config: Configuration = {
     entry: {
       index: path.resolve("./src/index.tsx"),
     },
@@ -10,12 +12,17 @@ module.exports = (env, args) => {
       path: path.resolve("./dist"),
     },
     mode: "production",
-    devtool: "hidden-source-map",
     target: "web",
-    optimization: {},
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+    },
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],
       mainFields: ["browser", "module", "main"],
+      alias: {
+        '~': path.resolve('src'),
+      },
     },
     module: {
       rules: [
@@ -27,18 +34,18 @@ module.exports = (env, args) => {
             },
           ],
         },
-
+  
         {
           test: /\.css$/,
           use: [
-            'style-loader',
+            "style-loader",
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: "[local]-[hash:base64:5]",
-                }
-              }
+                  localIdentName:  env.WEBPACK_BUILD ? "hmr-[hash:base64:5]" : "[local]-[hash:base64:5]",
+                },
+              },
             },
           ],
         },
@@ -49,10 +56,6 @@ module.exports = (env, args) => {
       ignored: /node_modules/,
       poll: 300,
     },
-		optimization: {
-			minimize: true,
-			minimizer: [new TerserPlugin()],
-		},
   };
 
   return config;

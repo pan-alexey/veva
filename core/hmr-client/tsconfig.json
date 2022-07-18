@@ -1,25 +1,41 @@
 {
-	"compilerOptions": {
-		"outDir": "./dist",
-		"esModuleInterop": true,
-		"target": "es5",
-		"allowSyntheticDefaultImports":true,
-		"moduleResolution": "node",
-		"module": "commonjs",
-		"noImplicitAny": true,
-		"removeComments": true,
-		"sourceMap": true,
-		"jsx": "react",
-		"jsxFactory": "h"
-	},
-	"lib": [
-		"dom",
-		"es2017"
-	],
-	"baseUrl": ".",
-	"include": ["src/**/*"],
-	"files": ["src/index.d.ts"],
-	"exclude": [
-		"dist"
-	]
+  "compilerOptions": {
+    "outDir": "./dist",
+    /* Basic Options */
+    "target": "ES5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+    "module": "commonjs", /* Specify module code generation: 'none', commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "allowJs": true, /* Allow javascript files to be compiled. */
+    "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "jsxFactory": "h", /* Specify the JSX factory function to use when targeting react JSX emit, e.g. React.createElement or h. */
+    "jsxFragmentFactory": "Fragment", /* Specify the JSX fragment factory function to use when targeting react JSX emit with jsxFactory compiler option is specified, e.g. Fragment. */
+    /* Strict Type-Checking Options */
+    "strict": true, /* Enable all strict type-checking options. */
+    "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    /* Module Resolution Options */
+    "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "esModuleInterop": true, /* */
+    "baseUrl": ".", /* Base directory to resolve non-absolute module names. */
+    "paths": { /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+      "react": [
+        "./node_modules/preact/compat"
+      ],
+      "react-dom": [
+        "./node_modules/preact/compat"
+      ],
+      "~/*": ["./src/*"]
+    },
+    /* Advanced Options */
+    "skipLibCheck": true /* Skip type checking of declaration files. */
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    "src/index.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "**/__tests__/*",
+    "**/__test__/*",
+  ]
 }

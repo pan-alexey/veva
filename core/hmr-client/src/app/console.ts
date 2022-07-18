@@ -40,7 +40,7 @@ export const processConsole = (event: Types.Event) => {
 
   if (event.message === 'Modules updated') {
     colorConsole('Modules updated', 'grey', true);
-    event.modules.forEach(moduleId => {
+    event.modules?.forEach(moduleId => {
       console.log(moduleId)
     })
     console.groupEnd()
