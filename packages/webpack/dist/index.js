@@ -332,16 +332,10 @@ const config_1 = __webpack_require__(/*! ../../config */ "./src/config/index.ts"
 const webpack_1 = __importDefault(__webpack_require__(/*! webpack */ "webpack"));
 const templates = __importStar(__webpack_require__(/*! ./templates */ "./src/components/dev/templates/index.ts"));
 const chalk_1 = __importDefault(__webpack_require__(/*! chalk */ "chalk"));
-const fs = __importStar(__webpack_require__(/*! fs */ "fs"));
 const core_builder_1 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const core_builder_2 = __webpack_require__(/*! @veva/core-builder */ "@veva/core-builder");
 const core_server_1 = __webpack_require__(/*! @veva/core-server */ "@veva/core-server");
 const utils_1 = __webpack_require__(/*! @veva/utils */ "@veva/utils");
-const isFile = async (file) => new Promise(resolve => {
-    fs.access(file, fs.constants.F_OK, (err) => {
-        resolve(!err);
-    });
-});
 async function default_1(options) {
     const { devConfig, appConfig } = options;
     // 1. start server
@@ -415,7 +409,7 @@ async function default_1(options) {
                 const warning = statsData.warnings[i];
                 let file = warning.moduleName || warning.file ? warning._name_ : '';
                 file = file && warning.loc ? `${file}:${parseInt(warning.loc)}` : file;
-                let title = `🟡 ${chalk_1.default.yellow.bold('Warning')}`;
+                let title = `🟡 ${chalk_1.default.yellow.bold('Warning [client & server]')}`;
                 title += file ? ` in ${file}` : ':';
                 console.log(title);
                 console.log(warning.message);
@@ -427,7 +421,7 @@ async function default_1(options) {
                 const error = statsData.errors[i];
                 let file = error.moduleName || error.file ? error._name_ : '';
                 file = file && error.loc ? `${file}:${parseInt(error.loc)}` : file;
-                let title = `❌ ${chalk_1.default.red.bold('ERROR')}`;
+                let title = `❌ ${chalk_1.default.red.bold('Error [client]')}`;
                 title += file ? ` in ${file}` : ':';
                 console.log(title);
                 console.log(error.message);
@@ -644,16 +638,6 @@ module.exports = require("cli-table");
 
 /***/ }),
 
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/***/ ((module) => {
-
-module.exports = require("fs");
-
-/***/ }),
-
 /***/ "handlebars":
 /*!*****************************!*\
   !*** external "handlebars" ***!
@@ -789,6 +773,7 @@ const cli = async (config) => {
     process.exit(1);
 };
 exports.cli = cli;
+// default config
 exports["default"] = (optionCallback, devConfig = {}) => new app_1.App({
     optionCallback,
     devConfig,

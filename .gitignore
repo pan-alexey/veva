@@ -1,5 +1,6 @@
 node_modules
 .build
+draft
 !.eslintrc.js
 !.prettierrc.js
 coverage

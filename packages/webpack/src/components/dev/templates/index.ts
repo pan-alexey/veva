@@ -3,7 +3,6 @@ import Handlebars from 'handlebars';
 import { getPackageJson,  } from '@veva/utils/nodePackage'
 import { getIp } from '@veva/utils/network';
 
-
 import templateHeader from './common/header.hbs';
 import templateFooter from './common/footer.hbs';
 import templateProgress from './progress.hbs';

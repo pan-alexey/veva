@@ -37,6 +37,7 @@ export type DevConfig = Partial<{
   static: string | Array<string>;
 }>
 
+// default config
 export default (
   optionCallback: OptionCallback,
   devConfig: DevConfig = {}

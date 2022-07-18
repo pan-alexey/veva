@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.webpackStas = exports.helpers = exports.network = exports.nodePackage = exports.terminal = exports.processConfig = void 0;
+exports.fileSystem = exports.webpackHmrStats = exports.helpers = exports.network = exports.nodePackage = exports.terminal = exports.processConfig = void 0;
 const processConfig = __importStar(require("./processConfig"));
 exports.processConfig = processConfig;
 const terminal = __importStar(require("./terminal"));
@@ -34,5 +34,7 @@ const network = __importStar(require("./network"));
 exports.network = network;
 const helpers = __importStar(require("./helpers"));
 exports.helpers = helpers;
-const webpackStas = __importStar(require("./webpackStats"));
-exports.webpackStas = webpackStas;
+const webpackHmrStats = __importStar(require("./webpackHmrStats"));
+exports.webpackHmrStats = webpackHmrStats;
+const fileSystem = __importStar(require("./fileSystem"));
+exports.fileSystem = fileSystem;

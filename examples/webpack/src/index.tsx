@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss'
 
-let a: string = 1;
+// let a: string = 1;
 function App() {
   const Text = React.lazy(() => import("./components/Text"));
 

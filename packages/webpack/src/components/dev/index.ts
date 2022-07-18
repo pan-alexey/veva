@@ -24,12 +24,6 @@ export interface Options {
   showWarnings: boolean;
 }
 
-const isFile = async (file: string) => new Promise(resolve => {
-  fs.access(file, fs.constants.F_OK, (err) => {
-    resolve(!err)
-  });
-})
-
 export default async function (options: Options) {
   const { devConfig, appConfig } = options;
 
@@ -110,7 +104,7 @@ export default async function (options: Options) {
           let file = warning.moduleName || warning.file ? warning._name_ : '';
           file = file && warning.loc ? `${file}:${parseInt(warning.loc)}` : file;
 
-          let title = `🟡 ${chalk.yellow.bold('Warning')}`;
+          let title = `🟡 ${chalk.yellow.bold('Warning [client & server]')}`;
           title += file ? ` in ${file}` : ':';
 
           console.log(title)
@@ -125,7 +119,7 @@ export default async function (options: Options) {
           let file = error.moduleName || error.file ? error._name_ : '';
           file = file && error.loc ? `${file}:${parseInt(error.loc)}` : file;
 
-          let title = `❌ ${chalk.red.bold('ERROR')}`;
+          let title = `❌ ${chalk.red.bold('Error [client]')}`;
           title += file ? ` in ${file}` : ':';
 
           console.log(title)

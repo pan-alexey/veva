@@ -23,6 +23,7 @@
   "dependencies": {
     "minimist":"^1.2.6",
     "dotenv":"^16.0.1",
-    "webpack":"^5.73.0"
+    "webpack":"^5.73.0",
+    "webpack-hmr-server":"^1.1.10"
   }
 }
