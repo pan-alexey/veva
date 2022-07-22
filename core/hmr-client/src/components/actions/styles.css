@@ -1,0 +1,83 @@
+.actions {
+  flex: 1;
+  display: flex;
+  padding: 10px 0px;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  display: block;
+  border: 1px solid #8C8C8C;
+  text-align: center;
+  margin-right: -1px;
+  cursor: pointer;
+  padding: 0px 5px;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-group .btn {
+  margin-right: -1px;
+  min-width: 60px;
+}
+
+.btn-group .btn:first-child {
+  border-radius: 3px 0px 0px 3px;
+}
+
+.btn-group .btn:last-child {
+  border-radius: 0px 3px 3px 0px;
+}
+
+.btn-group .btn.active {
+  background: #FFFFFF;
+  color: #434752;
+}
+
+.btn-actions {
+  display: flex;
+}
+
+.btn-actions .btn {
+  margin-left: 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.btn:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  transform: translate(-50%, -5px);
+  display: none;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: #597EF7;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 50%;
+  white-space: nowrap;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #597EF7 transparent transparent transparent;
+}

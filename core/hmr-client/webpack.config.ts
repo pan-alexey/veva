@@ -3,6 +3,22 @@ import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 
 
+import * as ts from 'typescript';
+
+export function removeDataTestIdTransformer<T extends ts.Node> (): ts.TransformerFactory<T> {
+  return context => {
+    const visit: ts.Visitor = node => {
+      if (ts.isJsxAttribute(node)) {
+        if (node.name.getText() === 'data-test-id' || node.name.getText() === 'data-testid') {
+          return undefined;
+        }
+      }
+      return ts.visitEachChild(node, visit, context);
+    };
+    return node => ts.visitNode(node, visit);
+  };
+}
+
 export default (env: Record<string, string|boolean>):Configuration  => {
   const config: Configuration = {
     entry: {
@@ -15,7 +31,10 @@ export default (env: Record<string, string|boolean>):Configuration  => {
     target: "web",
     optimization: {
       minimize: true,
-      minimizer: [new TerserPlugin()],
+      minimizer: [new TerserPlugin({
+        minify: TerserPlugin.uglifyJsMinify,
+        terserOptions: {},
+      })],
     },
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],
@@ -31,6 +50,11 @@ export default (env: Record<string, string|boolean>):Configuration  => {
           use: [
             {
               loader: "ts-loader",
+              options: {
+                getCustomTransformers: () => ({
+                  before: [removeDataTestIdTransformer()]
+                })
+              }
             },
           ],
         },

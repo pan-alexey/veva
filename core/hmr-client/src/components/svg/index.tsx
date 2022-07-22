@@ -1,6 +1,10 @@
 import { h, JSX } from "preact";
 
-export const Bug = ({ size = "1em", fill = "#fff", className = '' }): JSX.Element => {
+export const Bug = ({
+  size = "1em",
+  fill = "#fff",
+  className = "",
+}): JSX.Element => {
   return (
     <svg
       className={className}
@@ -21,7 +25,11 @@ export const Bug = ({ size = "1em", fill = "#fff", className = '' }): JSX.Elemen
   );
 };
 
-export const Carret = ({ size = "1em", fill = "#fff", className = '' }): JSX.Element => {
+export const Carret = ({
+  size = "1em",
+  fill = "#fff",
+  className = "",
+}): JSX.Element => {
   return (
     <svg
       className={className}
@@ -41,7 +49,11 @@ export const Carret = ({ size = "1em", fill = "#fff", className = '' }): JSX.Ele
   );
 };
 
-export const Close = ({ size = "1em", fill = "#fff", className = '' }): JSX.Element => {
+export const Close = ({
+  size = "1em",
+  fill = "#fff",
+  className = "",
+}): JSX.Element => {
   return (
     <svg
       className={className}
@@ -62,7 +74,11 @@ export const Close = ({ size = "1em", fill = "#fff", className = '' }): JSX.Elem
   );
 };
 
-export const Code = ({ size = "1em", fill = "#fff", className = '' }): JSX.Element => {
+export const Collapse = ({
+  size = "1em",
+  fill = "#fff",
+  className = "",
+}): JSX.Element => {
   return (
     <svg
       className={className}
@@ -73,16 +89,20 @@ export const Code = ({ size = "1em", fill = "#fff", className = '' }): JSX.Eleme
       }}
       viewBox="64 64 896 896"
       focusable="false"
-      data-icon="code"
+      data-icon="vertical-align-middle"
       fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 00308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 00-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
+      <path d="M859.9 474H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zm-353.6-74.7c2.9 3.7 8.5 3.7 11.3 0l100.8-127.5c3.7-4.7.4-11.7-5.7-11.7H550V104c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v156h-62.8c-6 0-9.4 7-5.7 11.7l100.8 127.6zm11.4 225.4a7.14 7.14 0 00-11.3 0L405.6 752.3a7.23 7.23 0 005.7 11.7H474v156c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V764h62.8c6 0 9.4-7 5.7-11.7L517.7 624.7z"></path>
     </svg>
   );
 };
 
-export const Desktop = ({ size = "1em", fill = "#fff", className = '' }): JSX.Element => {
+export const Expand = ({
+  size = "1em",
+  fill = "#fff",
+  className = "",
+}): JSX.Element => {
   return (
     <svg
       className={className}
@@ -93,11 +113,11 @@ export const Desktop = ({ size = "1em", fill = "#fff", className = '' }): JSX.El
       }}
       viewBox="64 64 896 896"
       focusable="false"
-      data-icon="desktop"
+      data-icon="column-height"
       fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M928 140H96c-17.7 0-32 14.3-32 32v496c0 17.7 14.3 32 32 32h380v112H304c-8.8 0-16 7.2-16 16v48c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-48c0-8.8-7.2-16-16-16H548V700h380c17.7 0 32-14.3 32-32V172c0-17.7-14.3-32-32-32zm-40 488H136V212h752v416z"></path>
+      <path d="M840 836H184c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h656c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8zm0-724H184c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h656c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8zM610.8 378c6 0 9.4-7 5.7-11.7L515.7 238.7a7.14 7.14 0 00-11.3 0L403.6 366.3a7.23 7.23 0 005.7 11.7H476v268h-62.8c-6 0-9.4 7-5.7 11.7l100.8 127.5c2.9 3.7 8.5 3.7 11.3 0l100.8-127.5c3.7-4.7.4-11.7-5.7-11.7H548V378h62.8z"></path>
     </svg>
   );
 };

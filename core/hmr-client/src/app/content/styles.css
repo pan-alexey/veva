@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  /* flex: 1; */
+  max-width: 900px;
+  width: 100%;
+  background: #1F2538;
+  flex-direction: column;
+}
+
+.panel {
+  background: #2A344C;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.panel-actions {
+  display: flex;
+}
+
+.panel-actions {
+  display: flex;
+}
+
+.panel-items {
+  display: flex;
+  flex-direction: column;
+}
