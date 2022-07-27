@@ -1,6 +1,6 @@
 {
   "name": "@veva/webpack",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
@@ -44,6 +44,6 @@
     "@veva/core-app": "^1.1.0",
     "@veva/core-builder":  "^1.1.0",
     "@veva/utils": "^1.1.0",
-    "@veva/core-hmr-client": "^1.1.0"
+    "@veva/core-hmr-client": "^1.1.2"
   }
 }

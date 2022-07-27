@@ -1,6 +1,6 @@
 {
   "name": "veva-example-webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "veva.webpack build --config=./veva.config.ts",
     "dev": "veva.webpack dev --config=./veva.config.ts"
@@ -9,7 +9,7 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "@veva/webpack": "^1.1.0",
+    "@veva/webpack": "^1.1.2",
     "webpack":"^5.72.1",
     "html-webpack-plugin":"^5.5.0",
     "file-loader":"^6.2.0",
